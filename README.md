@@ -1,22 +1,35 @@
 # bitcoin_study
 - key
+  - private/public key
+    - 공개키로 암호화를 하면 데이터 보안에 중점을 두고, 개인키로 암호화를 하면 인증 과정에 중점을 두는 것이다.
   - private key
-    - https://medium.freecodecamp.org/how-to-generate-your-very-own-bitcoin-private-key-7ad0f4936e6c
+     - https://medium.freecodecamp.org/how-to-generate-your-very-own-bitcoin-private-key-7ad0f4936e6c
   - 중복 가능성
     - https://bitcoin.stackexchange.com/questions/3981/does-the-protocol-ensures-that-private-keys-are-unique
     - https://bitcoin.stackexchange.com/questions/60499/is-a-bitcoin-address-guaranteed-to-be-unique
     - https://bitcoin.stackexchange.com/questions/3679/has-someone-compared-the-cost-of-mining-vs-that-of-brute-forcing-addresses
     - https://www.ddengle.com/board_free/2184896
     - http://www.getnews.co.kr/view.php?ud=1716
-  - key demo : https://anders.com/blockchain/public-private-keys/keys.html
+  - key demo
+    - https://anders.com/blockchain/public-private-keys/keys.html
   - 타원곡선 함수
     - https://steemit.com/kr/@icoreport/key-2-ecc
 - 지갑
  - 비결정적/결정적
- - 연상기호
+    - https://steemit.com/kr/@twinbraid/4cd49y-hdwallet
  - 계층결정
+ - 연상기호
+    - http://ihpark92.tistory.com/8
 - 거래
   - 거래/입출력
+  - UTXO
+  - POW(Proof-of-Work)
+    - 한 노드에서 발생한 첫번째 트랜잭션이 전체 노드에 충분히 전파되기 전에 다른 노드에서 두번째 트랜잭션이 발생해 전파되고 있을 수 있다. 이런 경우를 해결하기 위해 합의알고리즘에서는 컴퓨팅 파워를 많이 쓴 노드가 순서를 정하는 pow방식을 택했다.
+    - pow는 다수결로 결정을 내리는 알고리즘이기에 51% 문제가 발생할 수 있다.
+    - 51% 공격 문제
+      - 해시 파워의 절반 이상을 가진 노드가 마이닝을 통해 해시값을 찾더라도 이웃 노드들에게 전파를 하지 않음
+      - 그리고 그 다음 블록을 계속해서 생성(과반수 이상의 해시 파워를 갖고 있기 때문에 다른 마이너들보다 긴 블록체인을 만들 수 있는 가능성이 높습니다.)
+      - 비트코인에서는 체인 분기시 짧은 체인은 파기하며, 가장 긴 체인을 올바른 체인으로 선정하기 때문에 해커들의 체인이 올바른 체인이 될 가능성이 높음
   - 수수료
   - demo
 - 네트워크
@@ -24,7 +37,18 @@
 - 블록체인
   - 블록구조
   - 머클트리
-  
-
-
-  
+  - 블록종류
+    - 메인 블록
+    - 2차 블록
+      - 메인 블록체인에서 나와서 브랜치를 형성하는 블록
+    - 고아블록
+      - 두 개의 블록이 각자 짧은 시간 내에 채굴되어 반대의 순서(부모블록 전에 자식블록이 도착)로 도착하는 경우에 발생한다.
+      - 고아블록은 부모블록이 도착하기 전까지 고아블록 풀에 저장된다.
+    - ?
+      - 가장 난이도가 높은 체인을 선택함으로써 마침내 모든 노드는 네트워크 전역의 합의를 이끌어내게된다. 체인들 간의 임시적으로 불일치가 발생하는 경우는 작업증명이 더 많이 추가되면 결국은 해결되면서 가능한 체인들 중 한 체인이 연장된다. 채굴 노드는 다음 블록을 채굴하면서 어떤 체인이 연장될지에 대해 선택함으로써 채굴 파워로 '투표'한다.
+  - 최장 체인(longest chain) / 최고 누적 난이도 체인(greatest cumulative difficulty chain)
+    - 블록체인은 분산화된 데이터 구조 이기에 항상 복사본들이 동일한 것은 아니다. 블록들이 다른 시간에 다른 노드에 도착할 수 있기에 노드들은 블록체인에 대해 다른 관점을 가지게 된다.  이 현상 해결하기 위해 각 노드는 항상 작업증명을 가장 많이 시행한 블록체인을 선택해서 연장하려고 하며 이러한 체인을 최장체인이라한다.
+    - 2차 체인(?)
+  - 합의매커니즘
+    - https://docs.google.com/presentation/d/1TKDUwmKdMIybpHW9bUTzuil2e9yC5aYENt42YNYqSsE/edit?fbclid=IwAR0M_H9ustBj3WF5ht9ogyngHiTHi7HsfzRWsmqaRdjNvvdZ2YfJ2OeaL44#slide=id.g260d26c1fc_0_394
+    -
